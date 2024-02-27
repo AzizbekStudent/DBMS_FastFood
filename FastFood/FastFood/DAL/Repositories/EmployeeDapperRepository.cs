@@ -22,11 +22,11 @@ namespace FastFood.DAL.Repositories
 
         // Procedures
 
-        private const string Employee_GetAll = Sql_Procedure_Scripts.p_Employee_Get_All;
-        private const string Employee_Create = Sql_Procedure_Scripts.p_Employee_Insert;
-        private const string Employee_Update = Sql_Procedure_Scripts.p_Employee_Update;
-        private const string Employee_GetByID = Sql_Procedure_Scripts.p_Employee_Get_ByID;
-        private const string Employee_Delete = Sql_Procedure_Scripts.p_Employee_Delete;
+        private const string udp_GetAllEmployee = Sql_Procedure_Scripts.udp_GetAllEmployee;
+        private const string p_Employee_Insert = Sql_Procedure_Scripts.p_Employee_Insert;
+        private const string p_Employee_Update = Sql_Procedure_Scripts.p_Employee_Update;
+        private const string p_Employee_Get_ByID = Sql_Procedure_Scripts.p_Employee_Get_ByID;
+        private const string p_Employee_Delete = Sql_Procedure_Scripts.p_Employee_Delete;
 
         //
 
@@ -35,14 +35,14 @@ namespace FastFood.DAL.Repositories
         public async Task<IEnumerable<Employee>> GetAllAsync()
         {
             using var conn = new SqlConnection(_connStr);
-            return await conn.QueryAsync<Employee>(Employee_GetAll, commandType: CommandType.StoredProcedure);
+            return await conn.QueryAsync<Employee>("udp_GetAllEmployee", commandType: CommandType.StoredProcedure);
         }
 
         // Get By ID
         public async Task<Employee> GetByIdAsync(int id)
         {
             using var conn = new SqlConnection(_connStr);
-            Employee? employee = await conn.QueryFirstOrDefaultAsync<Employee>(Employee_GetByID, new { Id = id }, commandType: CommandType.StoredProcedure);
+            Employee? employee = await conn.QueryFirstOrDefaultAsync<Employee>("p_Employee_Get_ByID", new { Id = id }, commandType: CommandType.StoredProcedure);
             return employee;
         }
 
@@ -65,7 +65,7 @@ namespace FastFood.DAL.Repositories
             });
             parameters.Add("employee_ID", DbType.Int32, direction: ParameterDirection.Output);
 
-            await conn.ExecuteAsync(Employee_Create, parameters, commandType: CommandType.StoredProcedure);
+            await conn.ExecuteAsync("p_Employee_Insert", parameters, commandType: CommandType.StoredProcedure);
             return parameters.Get<int>("employee_ID");
         }
 
@@ -73,7 +73,7 @@ namespace FastFood.DAL.Repositories
         public async Task UpdateAsync(Employee entity)
         {
             using var conn = new SqlConnection(_connStr);
-            await conn.ExecuteAsync(Employee_Update, entity, commandType: CommandType.StoredProcedure);
+            await conn.ExecuteAsync("p_Employee_Update", entity, commandType: CommandType.StoredProcedure);
 
         }
 
@@ -81,7 +81,7 @@ namespace FastFood.DAL.Repositories
         public async Task DeleteAsync(Employee entity)
         {
             using var conn = new SqlConnection(_connStr);
-            await conn.ExecuteAsync(Employee_Delete, new { Id = entity.employee_ID }, commandType: CommandType.StoredProcedure);
+            await conn.ExecuteAsync("p_Employee_Delete", new { Id = entity.employee_ID }, commandType: CommandType.StoredProcedure);
 
         }
 

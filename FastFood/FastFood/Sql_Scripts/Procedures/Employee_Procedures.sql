@@ -3,7 +3,7 @@
 
 -- Get all
 Go
-Create or Alter Procedure p_Employee_Get_All
+Create or Alter Procedure udp_GetAllEmployee
 As
 Begin
 	Select employee_ID, FName, LName, Telephone, Job, Age, Salary, HireDate, Image, FullTime
