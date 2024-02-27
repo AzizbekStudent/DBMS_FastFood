@@ -3,14 +3,14 @@
     // Students ID: 00013836, 00014725, 00014896
     public interface IRepository<T>
     {
-        IList<T> GetAll();
+        Task<IEnumerable<T>> GetAllAsync();
 
-        T GetByID(int Id);
+        Task<T> GetByIdAsync(int id);
 
-        int Create(T entity);
+        Task<int> CreateAsync(T entity);
 
-        void Update(T entity);
+        Task UpdateAsync(T entity);
 
-        void Delete(T entity);
+        Task DeleteAsync(T entity);
     }
 }
