@@ -79,9 +79,9 @@
                 @Html.DisplayFor(modelItem => item.FullTime)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Edit", "Edit", new {  id=item.employee_ID  }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.employee_ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.employee_ID })
             </td>
         </tr>
 }

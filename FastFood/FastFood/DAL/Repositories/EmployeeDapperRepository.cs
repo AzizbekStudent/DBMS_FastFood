@@ -22,11 +22,11 @@ namespace FastFood.DAL.Repositories
 
         // Procedures
 
-        private const string Employee_GetAll = Sql_Procedure_Scripts.sp_Employee_Get_All;
-        private const string Employee_Create = Sql_Procedure_Scripts.sp_Employee_Insert;
-        private const string Employee_Update = Sql_Procedure_Scripts.sp_Employee_Update;
-        private const string Employee_GetByID = Sql_Procedure_Scripts.sp_Employee_Get_By_Id;
-        private const string Employee_Delete = Sql_Procedure_Scripts.sp_Employee_Delete;
+        private const string Employee_GetAll = Sql_Procedure_Scripts.p_Employee_Get_All;
+        private const string Employee_Create = Sql_Procedure_Scripts.p_Employee_Insert;
+        private const string Employee_Update = Sql_Procedure_Scripts.p_Employee_Update;
+        private const string Employee_GetByID = Sql_Procedure_Scripts.p_Employee_Get_ByID;
+        private const string Employee_Delete = Sql_Procedure_Scripts.p_Employee_Delete;
 
         //
 

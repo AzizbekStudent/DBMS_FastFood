@@ -5,7 +5,7 @@
     {
         // SQL statements for table
         // Employee
-        public const string sp_Employee_Get_All = @"
+        public const string p_Employee_Get_All = @"
 Create or Alter Procedure p_Employee_Get_All
 As
 Begin
@@ -13,7 +13,7 @@ Begin
 	From Employee
 End";
 
-        public const string sp_Employee_Insert = @"
+        public const string p_Employee_Insert = @"
 Create or Alter Procedure p_Employee_Insert
     @FName varchar(255),
     @LName varchar(255),
@@ -36,7 +36,7 @@ Begin
     Values (@FName, @LName, @Telephone, @Job, @Age, @Salary, @HireDate, @Image, @FullTime)
 End";
 
-        public const string sp_Employee_Update = @"
+        public const string p_Employee_Update = @"
 Create or Alter Procedure p_Employee_Update
     @employeeID Int,
     @FName varchar(255),
@@ -63,7 +63,7 @@ Begin
     Where employee_ID = @employeeID
 End";
 
-        public const string sp_Employee_Delete = @"
+        public const string p_Employee_Delete = @"
 Create or Alter Procedure p_Employee_Delete
     @employeeID Int
 As
@@ -71,7 +71,7 @@ Begin
     Delete From Employee Where employee_ID = @employeeID
 End";
 
-        public const string sp_Employee_Get_By_Id = @"
+        public const string p_Employee_Get_ByID = @"
 Create or Alter Procedure p_Employee_Get_ByID
     @employeeID int
 As
