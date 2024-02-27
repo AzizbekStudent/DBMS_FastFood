@@ -3,7 +3,8 @@ using FastFood.DAL.Models;
 using FastFood.DAL.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
-string? _connStr = builder.Configuration.GetConnectionString("FastFood_Db");
+string? _connStr = builder.Configuration.GetConnectionString("FastFood_Db")
+        .Replace("|DataDirectory|", builder.Environment.ContentRootPath);
 
 builder.Services.AddScoped<IRepository<Employee>>(
    p =>
