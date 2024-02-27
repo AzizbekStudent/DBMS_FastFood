@@ -6,11 +6,41 @@ var builder = WebApplication.CreateBuilder(args);
 string? _connStr = builder.Configuration.GetConnectionString("FastFood_Db")
         .Replace("|DataDirectory|", builder.Environment.ContentRootPath);
 
+
+// Repository initialization
 builder.Services.AddScoped<IRepository<Employee>>(
    p =>
    {
        return new EmployeeDapperRepository(_connStr);
    });
+
+builder.Services.AddScoped<IRepository<Orders>>(
+   p =>
+   {
+       return new OrdersDapperRepository(_connStr);
+   });
+
+
+builder.Services.AddScoped<IRepository<Ingredients>>(
+   p =>
+   {
+       return new IngredientsDapperRepository(_connStr);
+   });
+
+
+builder.Services.AddScoped<IRepository<Menu>>(
+   p =>
+   {
+       return new MenuDapperRepository(_connStr);
+   });
+
+
+builder.Services.AddScoped<IRepository<Menu_Ingredients>>(
+   p =>
+   {
+       return new Menu_Ingredients_DapperRepository(_connStr);
+   });
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
